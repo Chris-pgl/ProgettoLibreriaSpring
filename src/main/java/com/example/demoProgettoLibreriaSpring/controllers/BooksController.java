@@ -15,12 +15,19 @@ import java.util.List;
 @RequestMapping("/books")
 public class BooksController {
 
-    @GetMapping("/get-book-list")
+    @GetMapping(value="/book-list")
     public List <Book> getBooksList(){
         List<Book> bookList = new ArrayList<>();
         bookList.add(new Book("Harry Potter","2345d4",12.56, 7));
         bookList.add(new Book("Il signore degli anelli","JSHEH4455",12.30, 8));
         return bookList;
+        /*{
+    "timestamp": "2023-03-13T14:08:59.208+00:00",
+    "status": 404,
+    "error": "Not Found",
+    "message": "No message available",
+    "path": "/book-list"
+}*/
     }
 
     @GetMapping("/books-price")

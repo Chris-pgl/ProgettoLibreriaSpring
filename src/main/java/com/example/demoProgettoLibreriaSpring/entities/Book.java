@@ -9,17 +9,17 @@ public class Book {
     private double price;
 
 
-    private int copie;
+    private int copies;
 
     public Book(){
 
     }
 
-    public Book(String title, String ISBN, double price, int copie) {
+    public Book(String title, String ISBN, double price, int copies) {
         this.title = title;
         this.ISBN = ISBN;
         this.price = price;
-        this.copie = copie;
+        this.copies = copies;
     }
 
 
@@ -48,11 +48,11 @@ public class Book {
     }
 
     public int getCopie() {
-        return copie;
+        return copies;
     }
 
     public void setCopie(int copie) {
-        this.copie = copie;
+        this.copies = copie;
     }
 
 }
