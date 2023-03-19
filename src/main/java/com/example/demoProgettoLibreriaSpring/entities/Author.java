@@ -1,6 +1,5 @@
 package com.example.demoProgettoLibreriaSpring.entities;
 
-
 import lombok.*;
 
 import javax.persistence.*;
@@ -8,18 +7,18 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Warehouse {
+@Getter
+@Setter
+public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-   private long id;
+    private long id;
 
-    @Column(nullable = false)
-   private String place;
+    @Column(nullable=false)
+    private String name;
 
     @OneToMany
     private Book book;
