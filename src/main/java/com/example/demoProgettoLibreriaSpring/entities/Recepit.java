@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Recepit {
-    /*
+
     private String shopName;
     private String info;
     private String address;
@@ -27,5 +27,5 @@ public class Recepit {
     private double electronicPayment;
     private double change;//resto
     private String numFiscalDocuments;
-    */
+
 }

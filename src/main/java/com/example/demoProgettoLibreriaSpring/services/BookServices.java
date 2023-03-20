@@ -16,22 +16,27 @@ import java.util.List;
 @Setter
 public class BookServices {
 
-    @Autowired
+
     private BookRepository bookRepository;
 
     public List<Book> getAllBooks(){
         return bookRepository.findAll();
     }
 
+
+    /*@Query("SELECT m FROM Movie m WHERE m.title LIKE %:title%")
+    List<Book> searchByTitleLike(@Param("title") String title);*/
     public List<Book> getBookByTitle(String title){
-        return bookRepository.getByTitle(title);
+        return bookRepository.findByTitle(title);
     }
 
-    public void saveBook(Book book){
+    public Book saveBook(Book book){
         bookRepository.save(book);
+        return book;
     }
 
-    public void deleteBook(long id){
+    public Book deleteBook(long id){
         bookRepository.deleteById(id);
+        return null;
     }
 }

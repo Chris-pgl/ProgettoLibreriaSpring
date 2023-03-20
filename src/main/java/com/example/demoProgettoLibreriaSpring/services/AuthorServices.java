@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Data
@@ -23,8 +24,11 @@ public class AuthorServices {
         return authorRepository.findAll();
     }
 
-    public List<Author> getAuthorById(long id){
-        return authorRepository.getById(id);
+    public Author getAuthorById(long id) throws Exception {
+        Optional<Author> optionalAuthor = authorRepository.findById(id);
+        if (optionalAuthor.isPresent()){
+            return optionalAuthor.get();
+        }else throw new Exception("I did not find the ID");
     }
 
     public void saveAuthor(Author author){

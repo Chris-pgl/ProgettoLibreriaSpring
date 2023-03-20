@@ -27,13 +27,13 @@ public class BookControllers {
     }
 
     @PostMapping("/save")
-    public Book saveBook(Book book){
-        return bookServices.saveBook(book);
+    public void saveBook(Book book){
+        bookServices.saveBook(book);
     }
 
     @DeleteMapping("/delete")
-    public Book deleteBookById(long id){
-        return bookServices.deleteBook(id);
+    public void deleteBookById(long id){
+        bookServices.deleteBook(id);
     }
 
     @GetMapping("/books-price")

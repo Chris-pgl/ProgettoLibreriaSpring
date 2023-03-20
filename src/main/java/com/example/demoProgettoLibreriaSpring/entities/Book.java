@@ -1,6 +1,8 @@
 package com.example.demoProgettoLibreriaSpring.entities;
 
+import com.example.demoProgettoLibreriaSpring.repositories.BookRepository;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 
@@ -12,6 +14,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Book {
+
+    @Autowired
+    private BookRepository bookRepository;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

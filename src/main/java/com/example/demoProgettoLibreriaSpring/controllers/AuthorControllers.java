@@ -20,17 +20,17 @@ public class AuthorControllers {
         }
 
         @GetMapping("/{id}")
-        public getAuthorById(@PathVariable long id){
+        public Author getAuthorById(@PathVariable long id) throws Exception {
             return authorServices.getAuthorById(id);
         }
 
         @PostMapping("/save")
-        public Author saveAuthor(Author author){
-            return authorServices.saveAuthor(author);
+        public void saveAuthor(Author author){
+            authorServices.saveAuthor(author);
         }
 
         @DeleteMapping("/delete")
-        public Author deleteAuthorById(long id){
-            return authorServices.deleteAuthor(id);
+        public void deleteAuthorById(long id){
+            authorServices.deleteAuthor(id);
         }
 }
