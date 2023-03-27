@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 public class BookServices {
 
-
+    @Autowired
     private BookRepository bookRepository;
 
     public List<Book> getAllBooks(){

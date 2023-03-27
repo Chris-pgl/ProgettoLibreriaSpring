@@ -18,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Warehouse {
 
-    // @Autowired
+    // @Autowired   questo serve solo nel service
     // private WarehouseRepository warehouseRepository;
 
     @Id
