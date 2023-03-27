@@ -35,10 +35,10 @@ public class Author {
     @Column
     private String bio;
 
-    @Column
+    @Column(nullable = false)
     private String placeOfBirth;
 
-    @Column
+    @Column(nullable = false)
     private String dateOfBirth;
 
     /*
