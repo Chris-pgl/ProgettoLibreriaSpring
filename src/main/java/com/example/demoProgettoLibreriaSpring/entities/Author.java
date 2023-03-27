@@ -20,6 +20,10 @@ public class Author {
 
     //private AuthorRepository authorRepository;
 
+    /*
+    potremmo volere separare nome e cognome, poi potremmo mettere data di nascita, genere, bio, ecc
+     */
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
