@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -30,6 +31,15 @@ public class Author {
 
     @Column(nullable=false)
     private String name;
+
+    @Column
+    private String bio;
+
+    @Column
+    private String placeOfBirth;
+
+    @Column
+    private String dateOfBirth;
 
     /*
 
