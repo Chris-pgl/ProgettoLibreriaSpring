@@ -1,10 +1,11 @@
 package com.example.demoProgettoLibreriaSpring.entities;
 
 import com.example.demoProgettoLibreriaSpring.repositories.BookRepository;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.*;
+
 
 @Data
 @Entity
@@ -15,8 +16,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Book {
 
-    @Autowired
-    private BookRepository bookRepository;
+    // perché stiamo importanto bookRepository in questa classe? a cosa ci serve?
+    // @Autowired
+    // private BookRepository bookRepository;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,6 +39,9 @@ public class Book {
     @ManyToOne
     private Warehouse warehouse;
 
+    /*
+    Io sono un libro. Noi libri siamo molti per ogni autore -> many books to one author.
+     */
     @ManyToOne
     private Author author;
 }

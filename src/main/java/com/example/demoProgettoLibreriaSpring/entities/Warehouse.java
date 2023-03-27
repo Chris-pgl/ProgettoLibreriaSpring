@@ -2,10 +2,12 @@ package com.example.demoProgettoLibreriaSpring.entities;
 
 
 import com.example.demoProgettoLibreriaSpring.repositories.WarehouseRepository;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.*;
+import java.util.List;
+
 
 @Data
 @Entity
@@ -16,16 +18,20 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class Warehouse {
 
-    @Autowired
-    private WarehouseRepository warehouseRepository;
+    // @Autowired
+    // private WarehouseRepository warehouseRepository;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-   private long id;
+    private long id;
 
     @Column(nullable = false)
-   private String place;
+    private String place;
 
+    /*
+    private Book book è sbagliato perchè significherebbe che nel magazzino c'è un libro solo
+    invece ce ne sono tanti -> vogliamo una collezione (una lista, un set, una mappa...)
+     */
     @OneToMany
-    private Book book;
+    private List<Book> book;
 }

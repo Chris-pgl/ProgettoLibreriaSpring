@@ -1,9 +1,9 @@
 package com.example.demoProgettoLibreriaSpring.entities;
 
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+
 
 @Data
 @Entity
@@ -14,6 +14,9 @@ import javax.persistence.Table;
 @NoArgsConstructor
 public class Recepit {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     private String shopName;
     private String info;
     private String address;

@@ -1,10 +1,12 @@
 package com.example.demoProgettoLibreriaSpring.entities;
 
 import com.example.demoProgettoLibreriaSpring.repositories.AuthorRepository;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.*;
+import java.util.List;
+
 
 @Data
 @Entity
@@ -25,6 +27,18 @@ public class Author {
     @Column(nullable=false)
     private String name;
 
+    /*
+
+    One to Many significa:
+    ogni libro ha UN SOLO autore, e ogni autore ha TANTI libri
+
+    book -- one --> author    -> ogni libro ha un autore
+    author -- many --> books  -> ogni autore ha una lista di libri
+
+    Io sono un libro. Sono uno solo per ogni libro, ma ho molti libri -> one author to many books.
+
+     */
+
     @OneToMany
-    private Book book;
+    private List<Book> book;
 }
