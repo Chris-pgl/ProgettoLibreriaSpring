@@ -25,12 +25,12 @@ public class AuthorControllers {
         }
 
         @PostMapping("/save")
-        public void saveAuthor(Author author){
+        public void saveAuthor(@RequestBody Author author){
             authorServices.saveAuthor(author);
         }
 
         @DeleteMapping("/delete")
-        public void deleteAuthorById(long id){
+        public void deleteAuthorById(@RequestParam long id){
             authorServices.deleteAuthor(id);
         }
 }

@@ -27,12 +27,12 @@ public class BookControllers {
     }
 
     @PostMapping("/save")
-    public void saveBook(Book book){
+    public void saveBook(@RequestBody Book book){
         bookServices.saveBook(book);
     }
 
     @DeleteMapping("/delete")
-    public void deleteBookById(long id){
+    public void deleteBookById(@RequestParam long id){
         bookServices.deleteBook(id);
     }
 
