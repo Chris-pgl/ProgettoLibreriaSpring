@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDateTime;
 
 
 @Data
@@ -35,6 +36,8 @@ public class Book {
 
     @Column(nullable = false)
     private int copies;
+
+    private LocalDateTime creationDate;
 
     @ManyToOne
     private Warehouse warehouse;
