@@ -17,7 +17,7 @@ public class StaffController {
 
     @GetMapping("/all")
     public List<Staff> getStaffList(){
-        return staffServices.getAllAuthors();
+        return staffServices.getAllStaff();
     }
 
     @GetMapping("/{id}")

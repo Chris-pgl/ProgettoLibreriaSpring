@@ -21,7 +21,7 @@ public class StaffServices {
     @Autowired
     StaffRepository staffRepository;
 
-    public List<Staff> getAllAuthors(){
+    public List<Staff> getAllStaff(){
         return staffRepository.findAll();
     }
 

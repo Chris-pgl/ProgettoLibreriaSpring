@@ -15,13 +15,15 @@ public class Staff {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
-    @Column(nullable=false)
+    @Column
+    private String name;
+    @Column
+    private String surname;
+    @Column
     private String groupName;
-
-    @Column(nullable=false)
+    @Column
     private String role;
-
+//collegare con il login??
 
 
 }
