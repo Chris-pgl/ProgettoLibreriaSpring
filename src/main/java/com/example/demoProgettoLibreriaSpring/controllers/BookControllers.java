@@ -1,7 +1,7 @@
 package com.example.demoProgettoLibreriaSpring.controllers;
 
 import com.example.demoProgettoLibreriaSpring.entities.Book;
-import com.example.demoProgettoLibreriaSpring.entities.BookDTO;
+import com.example.demoProgettoLibreriaSpring.DTO.BookDTO;
 import com.example.demoProgettoLibreriaSpring.entities.Recepit;
 import com.example.demoProgettoLibreriaSpring.services.BookServices;
 import org.springframework.beans.factory.annotation.Autowired;

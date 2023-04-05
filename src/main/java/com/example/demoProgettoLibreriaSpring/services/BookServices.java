@@ -1,7 +1,7 @@
 package com.example.demoProgettoLibreriaSpring.services;
 
 import com.example.demoProgettoLibreriaSpring.entities.Book;
-import com.example.demoProgettoLibreriaSpring.entities.BookDTO;
+import com.example.demoProgettoLibreriaSpring.DTO.BookDTO;
 import com.example.demoProgettoLibreriaSpring.repositories.AuthorRepository;
 import com.example.demoProgettoLibreriaSpring.repositories.BookRepository;
 import lombok.*;

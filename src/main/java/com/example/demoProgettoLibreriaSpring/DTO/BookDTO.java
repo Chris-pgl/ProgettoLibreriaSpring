@@ -1,4 +1,4 @@
-package com.example.demoProgettoLibreriaSpring.entities;
+package com.example.demoProgettoLibreriaSpring.DTO;
 
 public class BookDTO {
 
