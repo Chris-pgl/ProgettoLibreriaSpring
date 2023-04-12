@@ -4,6 +4,7 @@ import com.example.demoProgettoLibreriaSpring.entities.Author;
 
 import com.example.demoProgettoLibreriaSpring.services.AuthorServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,26 +12,34 @@ import java.util.List;
 @RequestMapping("/authors")
 public class AuthorControllers {
 
-        @Autowired
-        private AuthorServices authorServices;
+    // todo ResponseEntity
+    // todo gestione eccezioni
+    // todo metodi update
 
-        @GetMapping("/all")
-        public List<Author> getAuthorsList(){
-            return authorServices.getAllAuthors();
-        }
+    @Autowired
+    private AuthorServices authorServices;
 
-        @GetMapping("/{id}")
-        public Author getAuthorById(@PathVariable long id) throws Exception {
-            return authorServices.getAuthorById(id);
-        }
+    @GetMapping("/all")
+    public List<Author> getAuthorsList(){
+        return authorServices.getAllAuthors();
+    }
 
-        @PostMapping("/save")
-        public void saveAuthor(@RequestBody Author author){
-            authorServices.saveAuthor(author);
+    @GetMapping("/{id}")
+    public ResponseEntity getAuthorById(@PathVariable long id) {
+        try {
+            return ResponseEntity.ok(authorServices.getAuthorById(id));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
 
-        @DeleteMapping("/delete")
-        public void deleteAuthorById(@RequestParam long id){
-            authorServices.deleteAuthor(id);
-        }
+    @PostMapping("/save")
+    public void saveAuthor(@RequestBody Author author){
+        authorServices.saveAuthor(author);
+    }
+
+    @DeleteMapping("/delete")
+    public void deleteAuthorById(@RequestParam long id){
+        authorServices.deleteAuthor(id);
+    }
 }

@@ -28,7 +28,7 @@ public class AuthorServices {
         Optional<Author> optionalAuthor = authorRepository.findById(id);
         if (optionalAuthor.isPresent()){
             return optionalAuthor.get();
-        }else throw new Exception("I did not find the ID");
+        }else throw new Exception("Author with id " + id + " does not exist");
     }
 
     public void saveAuthor(Author author){
