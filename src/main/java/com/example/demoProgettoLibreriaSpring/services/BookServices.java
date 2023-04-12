@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Data
@@ -32,8 +33,13 @@ public class BookServices {
 
     /*@Query("SELECT m FROM Movie m WHERE m.title LIKE %:title%")
     List<Book> searchByTitleLike(@Param("title") String title);*/
-    public List<Book> getBookByTitle(String title){
-        return null;
+    public Book getBookByTitle(String title) throws Exception {
+
+        Optional<Book> optionalBook = bookRepository.findByTitle(title);
+        if (optionalBook.isEmpty()) {
+            throw new Exception("Cannot find book with title: " + title);
+        }
+        return optionalBook.get();
         //TODO sistemare questo errore
         //bookRepository.findByTitle(title);
         // Momentaneamente non funziona è da problemi

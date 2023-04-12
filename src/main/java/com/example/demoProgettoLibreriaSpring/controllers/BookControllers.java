@@ -4,7 +4,9 @@ import com.example.demoProgettoLibreriaSpring.entities.Book;
 import com.example.demoProgettoLibreriaSpring.DTO.BookDTO;
 import com.example.demoProgettoLibreriaSpring.entities.Recepit;
 import com.example.demoProgettoLibreriaSpring.services.BookServices;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,9 +24,13 @@ public class BookControllers {
         return bookServices.getAllBooks();
     }
 
-    @GetMapping("/{title}")
-    public List<Book> getBookByTitle(@PathVariable String title){
-        return bookServices.getBookByTitle(title);
+    @GetMapping("/find-by-title")
+    public ResponseEntity getBookByTitle(@RequestParam String title){
+        try {
+            return ResponseEntity.ok(bookServices.getBookByTitle(title));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
 
