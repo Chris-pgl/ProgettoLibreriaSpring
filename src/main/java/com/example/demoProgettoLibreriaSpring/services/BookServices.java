@@ -33,13 +33,13 @@ public class BookServices {
 
     /*@Query("SELECT m FROM Movie m WHERE m.title LIKE %:title%")
     List<Book> searchByTitleLike(@Param("title") String title);*/
-    public Book getBookByTitle(String title) throws Exception {
+    public List<Book> getBookByTitle(String title) throws Exception {
 
-        Optional<Book> optionalBook = bookRepository.findByTitle(title);
-        if (optionalBook.isEmpty()) {
-            throw new Exception("Cannot find book with title: " + title);
+        List<Book> books = bookRepository.findByTitleIgnoreCase(title);
+        if (books.size() == 0) {
+            throw new Exception("Cannot find any book with title: " + title);
         }
-        return optionalBook.get();
+        return books;
         //TODO sistemare questo errore
         //bookRepository.findByTitle(title);
         // Momentaneamente non funziona è da problemi

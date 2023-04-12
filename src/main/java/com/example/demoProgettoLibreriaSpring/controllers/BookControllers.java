@@ -27,7 +27,13 @@ public class BookControllers {
     @GetMapping("/find-by-title")
     public ResponseEntity getBookByTitle(@RequestParam String title){
         try {
-            return ResponseEntity.ok(bookServices.getBookByTitle(title));
+            // se troviamo un solo libro restituiamo una RE con dentro il libro
+            // se ne troviamo tanti la restituiamo con dentro una lista
+            List<Book> books = bookServices.getBookByTitle(title);
+            if (books.size() == 1) {
+                return ResponseEntity.ok(books.get(0));
+            }
+            return ResponseEntity.ok(books);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
