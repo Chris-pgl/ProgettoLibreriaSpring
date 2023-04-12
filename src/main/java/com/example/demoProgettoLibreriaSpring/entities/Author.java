@@ -1,10 +1,12 @@
 package com.example.demoProgettoLibreriaSpring.entities;
 
 import com.example.demoProgettoLibreriaSpring.repositories.AuthorRepository;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -38,8 +40,16 @@ public class Author {
     @Column(nullable = false)
     private String placeOfBirth;
 
+    /*
+    Problemi a usare String per salvare una data:
+    - ci troveremo con date scritte in modo diverso nel db (es. "12-4-1999", "1999/04/12", "12-apr-1999", ecc)
+    - non possiamo fare operazioni sulle date (es. sapere quanti giorni sono passati da una data,
+      oppure estrarre l'anno da una data)
+     */
     @Column(nullable = false)
-    private String dateOfBirth;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate dateOfBirth;
+
 
     /*
 
