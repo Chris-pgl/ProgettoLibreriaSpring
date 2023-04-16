@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public interface OrderRepository extends JpaRepository <Order, Long>{
 
-    Optional<Order> findOrderByClientName (String clientName, String clientSurname);
+    Optional<Order> findOrderByClientNameAndClientSurname (String clientName, String clientSurname);
 
     Optional<Order> findOrderByClientNumber(String clientNumber);
 

@@ -24,8 +24,8 @@ public class OrderServices {
         return orderRepository.findAll();
     }
 
-    public Order getOrderByClientName(String clientName, String clientSurname) throws Exception {
-        Optional<Order> optionalOrder = orderRepository.findOrderByClientName(clientName, clientSurname);
+    public Order getOrderByClientNameAndClientSurname(String clientName, String clientSurname) throws Exception {
+        Optional<Order> optionalOrder = orderRepository.findOrderByClientNameAndClientSurname(clientName, clientSurname);
         if (optionalOrder.isPresent()){
             return optionalOrder.get();
         }else throw new Exception("Order with Client Name :  " + clientName + " " +clientSurname+ " does not exist");

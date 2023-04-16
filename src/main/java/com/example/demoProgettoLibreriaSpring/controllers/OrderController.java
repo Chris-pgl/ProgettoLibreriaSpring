@@ -22,9 +22,9 @@ public class OrderController {
     }
 
     @GetMapping("/clientName")
-    public ResponseEntity getOrderByClientName(@RequestParam String clientName, @RequestParam String clientSurname) throws Exception {
+    public ResponseEntity getOrderByClientNameAndClientSurname(@RequestParam String clientName, @RequestParam String clientSurname) throws Exception {
         try {
-            Optional<Order> name = Optional.ofNullable(orderServices.getOrderByClientName(clientName, clientSurname));
+            Optional<Order> name = Optional.ofNullable(orderServices.getOrderByClientNameAndClientSurname(clientName, clientSurname));
             return ResponseEntity.ok(name);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
