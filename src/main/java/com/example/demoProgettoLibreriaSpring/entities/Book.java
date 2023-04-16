@@ -47,4 +47,7 @@ public class Book {
      */
     @ManyToOne
     private Author author;
+
+    @ManyToOne
+    private Order order;
 }

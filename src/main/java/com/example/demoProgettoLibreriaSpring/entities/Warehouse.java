@@ -34,4 +34,7 @@ public class Warehouse {
      */
     @OneToMany
     private List<Book> book;
+
+    @OneToMany
+    private List<Order> order;
 }

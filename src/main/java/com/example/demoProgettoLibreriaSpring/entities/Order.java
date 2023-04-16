@@ -3,6 +3,8 @@ package com.example.demoProgettoLibreriaSpring.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -16,17 +18,21 @@ public class Order{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String bookTitle;
-
-    private String bookISBN;
-
-    private double bookPrice;
-
+    @Column(nullable = false)
     private String clientName;
 
+    @Column(nullable = false)
     private String clientSurname;
 
+    @Column(nullable = false)
     private String clientEmail;
 
+    @Column(nullable = false)
+    private String clientNumber;
 
+    @OneToMany
+    private List<Book> book;
+
+    @ManyToOne
+    private Warehouse warehouse;
 }
