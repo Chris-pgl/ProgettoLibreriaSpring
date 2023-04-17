@@ -46,7 +46,7 @@ public class Author {
     - non possiamo fare operazioni sulle date (es. sapere quanti giorni sono passati da una data,
       oppure estrarre l'anno da una data)
      */
-    @Column(nullable = false)
+    //@Column(nullable = false)
     @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate dateOfBirth;
 
