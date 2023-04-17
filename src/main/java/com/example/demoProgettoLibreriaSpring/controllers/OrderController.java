@@ -1,8 +1,10 @@
 package com.example.demoProgettoLibreriaSpring.controllers;
 
+import com.example.demoProgettoLibreriaSpring.DTO.OrderDTO;
 import com.example.demoProgettoLibreriaSpring.entities.Order;
 import com.example.demoProgettoLibreriaSpring.services.OrderServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,8 +54,12 @@ public class OrderController {
     }
 
     @PostMapping("/save")
-    public void saveOrder(@RequestBody Order order) throws Exception {
-        orderServices.saveOrder(order);
+    public ResponseEntity saveOrder(@RequestBody OrderDTO orderDTO) throws Exception {
+        try {
+            return ResponseEntity.ok(orderServices.saveOrder(orderDTO));
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.PARTIAL_CONTENT).body(ex.getMessage());
+        }
     }
 
     @DeleteMapping("/delete")

@@ -31,8 +31,25 @@ public class Order{
     private String clientNumber;
 
     @OneToMany
-    private List<Book> book;
+    private List<Book> books;
 
     @ManyToOne
     private Warehouse warehouse;
+
+    public Order(String clientName, String clientSurname, String clientEmail, String clientNumber) {
+        this.clientName = clientName;
+        this.clientSurname = clientSurname;
+        this.clientEmail = clientEmail;
+        this.clientNumber = clientNumber;
+    }
+
+    public void addBook(Book book) {
+        books.add(book);
+    }
+
+    public void removeBook(Book book) {
+        // TODO approfondire il funzionamento di questo metodo
+        books.remove(book);
+    }
+
 }

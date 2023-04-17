@@ -3,6 +3,7 @@ package com.example.demoProgettoLibreriaSpring.controllers;
 import com.example.demoProgettoLibreriaSpring.entities.Book;
 import com.example.demoProgettoLibreriaSpring.DTO.BookDTO;
 import com.example.demoProgettoLibreriaSpring.entities.Recepit;
+import com.example.demoProgettoLibreriaSpring.repositories.BookRepository;
 import com.example.demoProgettoLibreriaSpring.services.BookServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,9 @@ public class BookControllers {
 
     @Autowired
     private BookServices bookServices;
+
+    @Autowired
+    private BookRepository bookRepository;
 
     @GetMapping("/all")
     public List <Book> getBooksList() {
@@ -88,6 +92,14 @@ public class BookControllers {
         return null;
     }
 
+    // localhost:8080/books/update/15
+    @PutMapping("/update/{id}")
+    public ResponseEntity updateBookTitle(@PathVariable long id, @RequestParam String newTitle) {
+        Book bookToBeUpdated = bookRepository.findById(id).get();
+        bookToBeUpdated.setTitle(newTitle);
+        bookRepository.save(bookToBeUpdated);
+        return ResponseEntity.ok().build();
+    }
 
 
 }
