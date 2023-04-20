@@ -30,9 +30,6 @@ public class BookServices {
         return bookRepository.findAll();
     }
 
-
-    /*@Query("SELECT m FROM Movie m WHERE m.title LIKE %:title%")
-    List<Book> searchByTitleLike(@Param("title") String title);*/
     public List<Book> getBookByTitle(String title) throws Exception {
 
         List<Book> books = bookRepository.findByTitleIgnoreCase(title);
@@ -40,9 +37,6 @@ public class BookServices {
             throw new Exception("Cannot find any book with title: " + title);
         }
         return books;
-        //TODO sistemare questo errore
-        //bookRepository.findByTitle(title);
-        // Momentaneamente non funziona è da problemi
     }
 
     public Book saveBook(BookDTO bookDTO){

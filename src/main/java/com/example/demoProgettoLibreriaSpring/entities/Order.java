@@ -30,7 +30,7 @@ public class Order{
     @Column(nullable = false)
     private String clientNumber;
 
-    @OneToMany
+    @ManyToMany
     private List<Book> books;
 
     @ManyToOne

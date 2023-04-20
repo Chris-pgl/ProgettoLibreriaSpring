@@ -1,9 +1,9 @@
 package com.example.demoProgettoLibreriaSpring.services;
 
+import com.example.demoProgettoLibreriaSpring.DTO.BookDTO;
 import com.example.demoProgettoLibreriaSpring.DTO.OrderDTO;
 import com.example.demoProgettoLibreriaSpring.entities.Book;
 import com.example.demoProgettoLibreriaSpring.entities.Order;
-import com.example.demoProgettoLibreriaSpring.entities.Warehouse;
 import com.example.demoProgettoLibreriaSpring.repositories.BookRepository;
 import com.example.demoProgettoLibreriaSpring.repositories.OrderRepository;
 import com.example.demoProgettoLibreriaSpring.repositories.WarehouseRepository;
@@ -71,10 +71,11 @@ public class OrderServices {
             //}
             for (long id : orderDTO.getBookIds()) {
                 Optional<Book> optional = bookRepository.findById(id);
-                if (optional.isEmpty()) {
+                if (optional.isPresent()) {
+                    order.addBook(optional.get());
+                }else {
                     throw new Exception("Cannot find book with id " + id);
                 }
-                order.addBook(optional.get());
             }
             // TODO gestire il caso in cui non trovo il magazzino (optional)
             order.setWarehouse(warehouseRepository.findById(orderDTO.getWarehouseId()).get());
@@ -94,10 +95,34 @@ public class OrderServices {
         }
     }
 
-    public void updateOrder(){
-        //voglio fare in modo che si possa fare l'update di tutto
-        //Email, numero di cell, aggiungere/togliere libri.
-        //chiedo a carlo se è meglio dividerlo come per il get
-        //o se posso farlo senza problemi in un unica soluzione
+//    public Optional<Order> updateOrderClientNumber(long id, String clientNewNumber) throws Exception {
+//        try {
+//            Optional<Order> orderToBeUpdated = orderRepository.findById(id);
+//            if (orderToBeUpdated.isPresent()) {
+//                orderToBeUpdated.get().setClientNumber(clientNewNumber);
+//                orderRepository.save(orderToBeUpdated);
+//                return orderToBeUpdated;
+//        }
+//        } catch (Exception e) {
+//            throw new Exception("Cannot find Order with ID : "+id);
+//        }
+//    }
+
+
+    public Order updateOrder( long id, Order orderDetails) throws Exception {
+        try {
+            Order updateOrder = orderRepository.getReferenceById(id);
+
+            updateOrder.setClientName(orderDetails.getClientName());
+            updateOrder.setClientSurname(orderDetails.getClientSurname());
+            updateOrder.setClientEmail(orderDetails.getClientEmail());
+            updateOrder.setClientNumber(orderDetails.getClientNumber());
+
+            orderRepository.save(updateOrder);
+
+            return updateOrder;
+        } catch (Exception e) {
+            throw new Exception("Cannot find Order with ID : "+id);
+        }
     }
 }

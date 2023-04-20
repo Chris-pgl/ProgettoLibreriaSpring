@@ -1,11 +1,13 @@
 package com.example.demoProgettoLibreriaSpring.entities;
 
 import com.example.demoProgettoLibreriaSpring.repositories.BookRepository;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Data
@@ -17,9 +19,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Book {
 
-    // perché stiamo importanto bookRepository in questa classe? a cosa ci serve?
-    // @Autowired
-    // private BookRepository bookRepository;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +27,7 @@ public class Book {
     @Column(nullable = false)
     private String title;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String ISBN;
 
     @Column(nullable = false)
@@ -40,14 +39,15 @@ public class Book {
     private LocalDateTime creationDate;
 
     @ManyToOne
+    @JoinColumn(name = "warehouse_id")
     private Warehouse warehouse;
 
-    /*
-    Io sono un libro. Noi libri siamo molti per ogni autore -> many books to one author.
-     */
     @ManyToOne
+    @JoinColumn(name = "author_id")
     private Author author;
 
-    @ManyToOne
-    private Order order;
+    @ManyToMany
+    @JsonIgnore
+    @JoinColumn(name = "order_id")
+    private List<Order> order;
 }
