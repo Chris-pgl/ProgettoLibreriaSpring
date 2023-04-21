@@ -1,6 +1,5 @@
 package com.example.demoProgettoLibreriaSpring.services;
 
-import com.example.demoProgettoLibreriaSpring.DTO.BookDTO;
 import com.example.demoProgettoLibreriaSpring.DTO.OrderDTO;
 import com.example.demoProgettoLibreriaSpring.entities.Book;
 import com.example.demoProgettoLibreriaSpring.entities.Order;
@@ -11,6 +10,7 @@ import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,6 +66,7 @@ public class OrderServices {
                     orderDTO.getClientSurname(),
                     orderDTO.getClientEmail(),
                     orderDTO.getClientNumber());
+            order.setBooks(new ArrayList<>());
             //for (String bookName : orderDTO.getBookNames()) {
             //    order.addBook(bookServices.getBookByTitle(bookName).get(0));
             //}

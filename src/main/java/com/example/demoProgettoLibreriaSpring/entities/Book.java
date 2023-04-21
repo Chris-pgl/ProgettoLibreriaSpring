@@ -39,15 +39,12 @@ public class Book {
     private LocalDateTime creationDate;
 
     @ManyToOne
-    @JoinColumn(name = "warehouse_id")
     private Warehouse warehouse;
 
     @ManyToOne
-    @JoinColumn(name = "author_id")
     private Author author;
 
     @ManyToMany
     @JsonIgnore
-    @JoinColumn(name = "order_id")
     private List<Order> order;
 }
