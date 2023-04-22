@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table
+@Table(name = "Orders")
 @Getter
 @Setter
 public class Order{
@@ -24,7 +24,7 @@ public class Order{
     @Column(nullable = false)
     private String clientSurname;
 
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String clientEmail;
 
     @Column(nullable = false)
