@@ -3,6 +3,7 @@ package com.example.demoProgettoLibreriaSpring.services;
 import com.example.demoProgettoLibreriaSpring.DTO.OrderDTO;
 import com.example.demoProgettoLibreriaSpring.entities.Book;
 import com.example.demoProgettoLibreriaSpring.entities.Order;
+import com.example.demoProgettoLibreriaSpring.entities.Warehouse;
 import com.example.demoProgettoLibreriaSpring.repositories.BookRepository;
 import com.example.demoProgettoLibreriaSpring.repositories.OrderRepository;
 import com.example.demoProgettoLibreriaSpring.repositories.WarehouseRepository;
@@ -109,7 +110,7 @@ public class OrderServices {
 //        }
 //    }
 
-
+// todo sistema questo metodo, in quanto deve poter aggiornare la lista di libri. (aggiungere o togliere)
     public Order updateOrder( long id, Order orderDetails) throws Exception {
         try {
             Order updateOrder = orderRepository.getReferenceById(id);
@@ -120,7 +121,6 @@ public class OrderServices {
             updateOrder.setClientNumber(orderDetails.getClientNumber());
 
             orderRepository.save(updateOrder);
-
             return updateOrder;
         } catch (Exception e) {
             throw new Exception("Cannot find Order with ID : "+id);

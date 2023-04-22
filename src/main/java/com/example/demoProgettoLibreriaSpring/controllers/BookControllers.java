@@ -84,11 +84,10 @@ public class BookControllers {
         bookServices.deleteBook(id);
     }
 
-    @GetMapping("/books-price")
+    @GetMapping("/book-price")
     public Recepit sellBooks(){
         //scalare il numero totale di copie dal magazino,
         //creare uno scontrino e restituirlo
-        //aggiornare il totale in cassa
         return null;
     }
 

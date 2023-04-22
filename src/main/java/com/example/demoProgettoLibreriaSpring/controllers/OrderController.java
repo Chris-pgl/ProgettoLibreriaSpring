@@ -63,11 +63,21 @@ public class OrderController {
     }
 
     @DeleteMapping("/delete")
-    public void deleteOrderById(@RequestParam long id) throws Exception {
-        orderServices.deleteOrderById(id);
+    public ResponseEntity deleteOrderById(@RequestParam long id) throws Exception {
+        try {
+            return ResponseEntity.ok(orderServices.deleteOrderById(id));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
+//    @PutMapping("/update/{id}")
+//    public ResponseEntity updateOrder(@PathVariable long id, @RequestBody Order orderDetail ){
+//        try {
+//            return ResponseEntity.ok(orderServices.updateOrder(id,orderDetail));
+//        } catch (Exception e){
+//            return ResponseEntity.badRequest().body(e.getMessage());
+//        }
+//     }
 
-    // public void updateOrder(){}
-    // chiedi a carlo, vedi OrderServices.
 }

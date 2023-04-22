@@ -64,7 +64,7 @@ public class Author {
 
      */
 
-    @OneToMany(mappedBy = "")
+    @OneToMany
     @JsonIgnore
     private List<Book> book;
 }
