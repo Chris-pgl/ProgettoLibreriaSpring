@@ -4,7 +4,10 @@ import com.example.demoProgettoLibreriaSpring.entities.Author;
 import com.example.demoProgettoLibreriaSpring.repositories.AuthorRepository;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,4 +41,21 @@ public class AuthorServices {
     public void deleteAuthor(long id){
         authorRepository.deleteById(id);
     }
+
+    public Author updateAuthor(@PathVariable long id, @RequestBody Author author) throws Exception {
+        Author updateAuthor = authorRepository.getAuthorById(id);
+        try {
+            updateAuthor.setName(author.getName());
+            updateAuthor.setBio(author.getBio());
+            updateAuthor.setBook(author.getBook());
+            updateAuthor.setPlaceOfBirth(author.getPlaceOfBirth());
+            updateAuthor.setDateOfBirth(author.getDateOfBirth());
+
+            authorRepository.save(updateAuthor);
+            return updateAuthor;
+        } catch (Exception e) {
+            throw new Exception("Not Update " + e.getMessage());
+        }
+    }
+
 }

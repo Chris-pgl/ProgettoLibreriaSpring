@@ -5,6 +5,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
+		<!-- fare un downgrade a una versione precedente per poter usare la vecchia versione di spring security
+		magari un giorno rifaremo l'upgrade alle 3.0.0 o successive e aggiorneremo anche il codice -->
 		<version>3.0.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
