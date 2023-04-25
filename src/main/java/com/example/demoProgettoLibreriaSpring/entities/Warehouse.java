@@ -2,6 +2,7 @@ package com.example.demoProgettoLibreriaSpring.entities;
 
 
 import com.example.demoProgettoLibreriaSpring.repositories.WarehouseRepository;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,6 @@ import java.util.List;
 @AllArgsConstructor
 public class Warehouse {
 
-    // @Autowired   questo serve solo nel service
-    // private WarehouseRepository warehouseRepository;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,5 +32,10 @@ public class Warehouse {
     invece ce ne sono tanti -> vogliamo una collezione (una lista, un set, una mappa...)
      */
     @OneToMany
+    @JsonIgnore
     private List<Book> book;
+
+    @OneToMany
+    @JsonIgnore
+    private List<Order> order;
 }
