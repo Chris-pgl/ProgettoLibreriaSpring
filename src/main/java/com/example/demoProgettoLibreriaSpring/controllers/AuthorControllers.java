@@ -13,9 +13,6 @@ import java.util.List;
 @RequestMapping("/authors")
 public class AuthorControllers {
 
-    // todo ResponseEntity              done
-    // todo gestione eccezioni          doing
-    // todo metodi update               done
 
     @Autowired
     private AuthorServices authorServices;
@@ -36,7 +33,6 @@ public class AuthorControllers {
 
     @PostMapping("/save")
     public ResponseEntity<String> saveAuthor(@RequestBody Author author) {
-        //authorServices.saveAuthor(author);
         try {
             authorServices.saveAuthor(author);
             return ResponseEntity.ok().body("Author created");

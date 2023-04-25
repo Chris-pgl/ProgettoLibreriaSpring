@@ -21,7 +21,7 @@ import java.util.List;
 public class Author {
 
 
-    //private AuthorRepository authorRepository;
+
 
     /*
     potremmo volere separare nome e cognome, poi potremmo mettere data di nascita, genere, bio, ecc
@@ -40,28 +40,8 @@ public class Author {
     @Column(nullable = false)
     private String placeOfBirth;
 
-    /*
-    Problemi a usare String per salvare una data:
-    - ci troveremo con date scritte in modo diverso nel db (es. "12-4-1999", "1999/04/12", "12-apr-1999", ecc)
-    - non possiamo fare operazioni sulle date (es. sapere quanti giorni sono passati da una data,
-      oppure estrarre l'anno da una data)
-     */
-    //@Column(nullable = false)
     @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate dateOfBirth;
-
-
-    /*
-
-    One to Many significa:
-    ogni libro ha UN SOLO autore, e ogni autore ha TANTI libri
-
-    book -- one --> author    -> ogni libro ha un autore
-    author -- many --> books  -> ogni autore ha una lista di libri
-
-    Io sono un libro. Sono uno solo per ogni libro, ma ho molti libri -> one author to many books.
-
-     */
 
     @OneToMany
     private List<Book> book;
