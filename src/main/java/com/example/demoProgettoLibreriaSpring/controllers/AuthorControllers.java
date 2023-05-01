@@ -55,6 +55,16 @@ public class AuthorControllers {
         }
     }
 
+    @GetMapping("/find")
+    public ResponseEntity findAuthorByName(String name){
+        try {
+            authorServices.findByName(name);
+            return ResponseEntity.ok().body("Here the author: " + name);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error.." + e.getMessage());
+        }
+    }
+
 }
 
 
