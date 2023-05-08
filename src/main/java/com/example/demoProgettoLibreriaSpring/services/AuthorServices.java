@@ -23,6 +23,8 @@ public class AuthorServices {
     @Autowired
     private AuthorRepository authorRepository;
 
+
+
     public List<Author> getAllAuthors(){
         return authorRepository.findAll();
     }
@@ -57,5 +59,13 @@ public class AuthorServices {
             throw new Exception("Not Update " + e.getMessage());
         }
     }
+
+    public Author findByName(String name) throws Exception{
+        Optional<Author> optionalAuthor = authorRepository.getAuthorByName(name);
+        if (optionalAuthor.isPresent()){
+            return optionalAuthor.get();
+        }else throw new Exception("Author with id " + name + " does not exist");
+    }
+
 
 }
