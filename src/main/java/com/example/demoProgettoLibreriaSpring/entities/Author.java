@@ -44,6 +44,11 @@ public class Author {
     @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate dateOfBirth;
 
+    /*
+    //@OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+    // TODO Giusto cosi sistemarlo in tutto
+     */
+
     @OneToMany
     @JsonIgnore
     private List<Book> book;
