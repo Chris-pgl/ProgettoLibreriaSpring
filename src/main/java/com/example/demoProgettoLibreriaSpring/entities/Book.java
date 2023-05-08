@@ -36,6 +36,9 @@ public class Book {
 
     private LocalDateTime creationDate;
 
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Inventory> inventories;
+
     @ManyToOne
     private Warehouse warehouse;
 

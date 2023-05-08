@@ -27,13 +27,13 @@ public class Warehouse {
     @Column(nullable = false)
     private String place;
 
-    /*
-    private Book book è sbagliato perchè significherebbe che nel magazzino c'è un libro solo
-    invece ce ne sono tanti -> vogliamo una collezione (una lista, un set, una mappa...)
-     */
+    // questa relazione si potrebbe anche rimuovere, perché è implicita nell'inventario
     @OneToMany
     @JsonIgnore
     private List<Book> book;
+
+    @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Inventory> inventories;
 
     @OneToMany
     @JsonIgnore
