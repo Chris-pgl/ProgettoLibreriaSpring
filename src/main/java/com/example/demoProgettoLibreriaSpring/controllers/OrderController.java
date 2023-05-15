@@ -71,13 +71,14 @@ public class OrderController {
         }
     }
 
-//    @PutMapping("/update/{id}")
-//    public ResponseEntity updateOrder(@PathVariable long id, @RequestBody Order orderDetail ){
-//        try {
-//            return ResponseEntity.ok(orderServices.updateOrder(id,orderDetail));
-//        } catch (Exception e){
-//            return ResponseEntity.badRequest().body(e.getMessage());
-//        }
-//     }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> updateOrder(@PathVariable long id, @RequestBody OrderDTO orderDetail ){
+        try {
+            Order o = orderServices.updateOrder(id, orderDetail);
+            return ResponseEntity.ok(o);
+        } catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+     }
 
 }

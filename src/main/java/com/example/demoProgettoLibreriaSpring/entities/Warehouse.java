@@ -32,9 +32,6 @@ public class Warehouse {
     @JsonIgnore
     private List<Book> book;
 
-    @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Inventory> inventories;
-
     @OneToMany
     @JsonIgnore
     private List<Order> order;

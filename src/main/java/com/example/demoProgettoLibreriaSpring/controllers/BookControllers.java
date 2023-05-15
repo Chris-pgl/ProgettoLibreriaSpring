@@ -75,8 +75,9 @@ public class BookControllers {
     Noi dobbiamo estrarre l'autore con l'id indicato nella richiesta e inserirlo dentro al libro.
      */
     @PostMapping("/save")
-    public void saveBook(@RequestBody BookDTO bookDTO){
+    public ResponseEntity saveBook(@RequestBody BookDTO bookDTO) throws Exception {
         bookServices.saveBook(bookDTO);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/delete")
@@ -84,20 +85,22 @@ public class BookControllers {
         bookServices.deleteBook(id);
     }
 
-    @GetMapping("/book-price")
-    public Recepit sellBooks(){
-        //scalare il numero totale di copie dal magazino,
-        //creare uno scontrino e restituirlo
-        return null;
-    }
+//    @GetMapping("/book-price")
+//    public Recepit sellBooks(){
+//        //scalare il numero totale di copie dal magazino,
+//        //creare uno scontrino e restituirlo
+//        return null;
+//    }
 
     // localhost:8080/books/update/15
     @PutMapping("/update/{id}")
-    public ResponseEntity updateBookTitle(@PathVariable long id, @RequestParam String newTitle) {
-        Book bookToBeUpdated = bookRepository.findById(id).get();
-        bookToBeUpdated.setTitle(newTitle);
-        bookRepository.save(bookToBeUpdated);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> updateOrder(@PathVariable long id, @RequestBody BookDTO bookDetail ){
+        try {
+            Book b = bookServices.updateBook(id, bookDetail);
+            return ResponseEntity.ok(b);
+        } catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
 

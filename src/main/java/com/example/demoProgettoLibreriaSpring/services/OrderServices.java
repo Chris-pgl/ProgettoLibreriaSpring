@@ -79,10 +79,13 @@ public class OrderServices {
                     throw new Exception("Cannot find book with id " + id);
                 }
             }
-            // TODO gestire il caso in cui non trovo il magazzino (optional)
-            order.setWarehouse(warehouseRepository.findById(orderDTO.getWarehouseId()).get());
+            Optional<Warehouse> optionalWarehouse = warehouseRepository.findById(orderDTO.getWarehouseId());
+            if (optionalWarehouse.isPresent()){
             order = orderRepository.save(order);
             return order;
+            }else {
+                throw new Exception("Sorry, i could not find this Warehouse ID");
+            }
         } catch (Exception e) {
             throw new Exception("Couldn't create order. Check if everything is all right!");
         }
@@ -110,15 +113,18 @@ public class OrderServices {
 //        }
 //    }
 
-// todo sistema questo metodo, in quanto deve poter aggiornare la lista di libri. (aggiungere o togliere)
-    public Order updateOrder( long id, Order orderDetails) throws Exception {
+    public Order updateOrder( long id, OrderDTO orderDetails) throws Exception {
         try {
-            Order updateOrder = orderRepository.getReferenceById(id);
+            Order updateOrder = orderRepository.findById(id).get();
 
             updateOrder.setClientName(orderDetails.getClientName());
             updateOrder.setClientSurname(orderDetails.getClientSurname());
             updateOrder.setClientEmail(orderDetails.getClientEmail());
             updateOrder.setClientNumber(orderDetails.getClientNumber());
+            updateOrder.setBooks(new ArrayList<>());
+            for (Long bookId : orderDetails.getBookIds()) {
+                updateOrder.getBooks().add(bookRepository.findById(bookId).get());
+            }
 
             orderRepository.save(updateOrder);
             return updateOrder;

@@ -47,9 +47,4 @@ public class Order{
         books.add( book);
     }
 
-    public void removeBook(Book book) {
-        // TODO approfondire il funzionamento di questo metodo
-        books.remove(book);
-    }
-
 }
