@@ -28,6 +28,10 @@ public class StaffController {
     public Staff getStaffById(@PathVariable long id) throws Exception {
         return staffServices.getStaffById(id);
     }
+    @GetMapping("/{name}")
+    public Staff getStaffByName(@PathVariable String name) throws Exception {
+        return staffServices.findByName(name);
+    }
 
     @PostMapping("/save")
     public void saveStaff(@RequestBody Staff staff){

@@ -40,6 +40,11 @@ public class StaffServices {
         staffRepository.deleteById(id);
     }
 
-
+    public Staff findByName(String name) throws Exception{
+        Optional<Staff> optionalStaff = staffRepository.getStaffByName(name);
+        if (optionalStaff.isPresent()){
+            return optionalStaff.get();
+        }else throw new Exception("Staff with name" + name + " does not exist");
+    }
 
 }
