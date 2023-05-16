@@ -49,7 +49,8 @@ public class Author {
     // TODO Giusto cosi sistemarlo in tutto
      */
 
-    @OneToMany
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Book> book;
 }

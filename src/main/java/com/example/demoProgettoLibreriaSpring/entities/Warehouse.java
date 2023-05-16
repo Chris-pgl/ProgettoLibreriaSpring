@@ -28,14 +28,17 @@ public class Warehouse {
     private String place;
 
     // questa relazione si potrebbe anche rimuovere, perché è implicita nell'inventario
-    @OneToMany
+    @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL, orphanRemoval = true)//provo
     @JsonIgnore
     private List<Book> book;
 
     @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Inventory> inventories;
 
-    @OneToMany
+    @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL, orphanRemoval = true)//prova
     @JsonIgnore
     private List<Order> order;
+
+
+
 }

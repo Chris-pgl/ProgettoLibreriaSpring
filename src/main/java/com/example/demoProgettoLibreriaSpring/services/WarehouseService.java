@@ -1,6 +1,7 @@
 package com.example.demoProgettoLibreriaSpring.services;
 
 import com.example.demoProgettoLibreriaSpring.DTO.LoadWarehouseDTO;
+import com.example.demoProgettoLibreriaSpring.DTO.RecepitDTO;
 import com.example.demoProgettoLibreriaSpring.entities.Book;
 import com.example.demoProgettoLibreriaSpring.entities.Inventory;
 import com.example.demoProgettoLibreriaSpring.entities.Warehouse;
@@ -16,13 +17,17 @@ import java.util.Optional;
 public class WarehouseService {
 
     @Autowired
-    InventoryRepository inventoryRepository;
+    private InventoryRepository inventoryRepository;
 
     @Autowired
-    WarehouseRepository warehouseRepository;
+    private WarehouseRepository warehouseRepository;
 
     @Autowired
-    BookRepository bookRepository;
+    private BookRepository bookRepository;
+
+
+    /*
+
 
     public Inventory loadBooks(LoadWarehouseDTO loadWarehouseDTO) throws Exception {
         // esiste un inventario?
@@ -35,7 +40,8 @@ public class WarehouseService {
             Optional<Book> optionalBook = bookRepository.findById(loadWarehouseDTO.getBookId());
             if (optionalBook.isEmpty()) throw new Exception("Book " + loadWarehouseDTO.getBookId() + " not found");
             Optional<Warehouse> optionalWarehouse = warehouseRepository.findById(loadWarehouseDTO.getWarehouseId());
-            if (optionalWarehouse.isEmpty()) throw new Exception("Warehouse " + loadWarehouseDTO.getWarehouseId() + " not found");
+            if (optionalWarehouse.isEmpty())
+                throw new Exception("Warehouse " + loadWarehouseDTO.getWarehouseId() + " not found");
             Inventory inventory = new Inventory();
             inventory.setBook(optionalBook.get());
             inventory.setWarehouse(optionalWarehouse.get());
@@ -43,5 +49,26 @@ public class WarehouseService {
             return inventoryRepository.save(inventory);
         }
     }
+}
 
+    /*
+    TODO
+    creare un service che:
+    1. cerca l'inventario di questo libro e:
+        1.1 se non lo trova o se l'inventario è vuoto -> errore
+        1.2 se lo trova scala il numero totale di copie
+    2. produce uno scontrino
+     */
+    /*
+    public RecepitDTO sellBook(RecepitDTO recepitDTO, long bookid) throws Exception {
+        inventoryRepository.findById(bookid);
+        if (inventoryRepository.findById(bookid).isPresent()) {
+            bookRepository.sellBook(bookid);
+        } else {
+
+        }
+
+
+    }
+*/
 }

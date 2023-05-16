@@ -14,6 +14,9 @@ public class WarehouseController {
     @Autowired
     WarehouseService warehouseService;
 
+
+    //TODO non funziona, sistemare loadBook dal Service e creare sellBook
+    /*
     @PostMapping("/load-books")
     public ResponseEntity loadBooks(@RequestBody LoadWarehouseDTO loadDTO) {
         // cerco l'inventario di questo libro in questo magazzino;
@@ -25,17 +28,23 @@ public class WarehouseController {
         }
     }
 
+     */
+
+    /*
     @PostMapping("/sell-book")
     public ResponseEntity sellBook() {
-        /*
+
         TODO
         creare un service che:
         1. cerca l'inventario di questo libro e:
             1.1 se non lo trova o se l'inventario è vuoto -> errore
             1.2 se lo trova scala il numero totale di copie
         2. produce uno scontrino
-         */
+
         return ResponseEntity.ok("todo");
     }
+
+     */
+
 
 }
