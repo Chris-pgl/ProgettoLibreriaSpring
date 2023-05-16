@@ -11,4 +11,6 @@ import java.util.Optional;
 public interface BookRepository extends JpaRepository<Book, Long> {
   List<Book> findByTitleIgnoreCase(String title);
 
+  List<Book> findByISBN(String ISBN);
+
 }

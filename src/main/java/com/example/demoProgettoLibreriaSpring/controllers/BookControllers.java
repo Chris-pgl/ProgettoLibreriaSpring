@@ -2,7 +2,6 @@ package com.example.demoProgettoLibreriaSpring.controllers;
 
 import com.example.demoProgettoLibreriaSpring.entities.Book;
 import com.example.demoProgettoLibreriaSpring.DTO.BookDTO;
-import com.example.demoProgettoLibreriaSpring.entities.Recepit;
 import com.example.demoProgettoLibreriaSpring.repositories.BookRepository;
 import com.example.demoProgettoLibreriaSpring.services.BookServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +36,16 @@ public class BookControllers {
                 return ResponseEntity.ok(books.get(0));
             }
             return ResponseEntity.ok(books);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/findByISBN")
+    public ResponseEntity getBookByISBN(@RequestParam String ISBN) throws Exception {
+        try {
+            List<Book> book = bookServices.getBookByISBN(ISBN);
+            return ResponseEntity.ok(book);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

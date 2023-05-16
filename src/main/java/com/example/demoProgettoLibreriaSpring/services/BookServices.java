@@ -6,12 +6,10 @@ import com.example.demoProgettoLibreriaSpring.repositories.AuthorRepository;
 import com.example.demoProgettoLibreriaSpring.repositories.BookRepository;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Data
@@ -38,6 +36,15 @@ public class BookServices {
             throw new Exception("Cannot find any book with title: " + title);
         }
         return books;
+    }
+
+    public List<Book> getBookByISBN(String ISBN) throws Exception {
+        try {
+            List<Book> book = bookRepository.findByISBN(ISBN);
+            return book;
+        } catch (Exception e) {
+            throw new Exception("Cannot find book with ISBN: " + ISBN);
+        }
     }
 
     public Book saveBook(BookDTO bookDTO) throws Exception {
