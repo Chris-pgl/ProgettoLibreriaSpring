@@ -26,18 +26,6 @@ public class ClientService {
         return clientRepository.findAll();
     }
 
-    /* magari funzionerà con gli ordini
-    public Client saveClient(ClientDTO clientDTO){
-        Client client = new Client();
-        client.setName(clientDTO.getName());
-        client.setUsername(clientDTO.getUsername());
-        client.setCellNumber(clientDTO.getCellNumber());
-        client.setEmail(clientDTO.getEmail());
-        // client.setOrder(OrderRepository.findById(orderDTO.getOrderId()).get());
-        return clientRepository.save(client);
-
-    }
-     */
 
     public void saveCLient(Client client){
         clientRepository.save(client);
