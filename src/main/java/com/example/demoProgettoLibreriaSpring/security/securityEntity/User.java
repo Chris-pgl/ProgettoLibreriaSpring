@@ -13,6 +13,7 @@ public class User {
     private String surname;
     private String username;
     private String password;
+    @Column(unique = true)
     private String email;
     private boolean isActive = true; //TODO per ora è finto attivo
     private String activationCode; //TODO da sistemare

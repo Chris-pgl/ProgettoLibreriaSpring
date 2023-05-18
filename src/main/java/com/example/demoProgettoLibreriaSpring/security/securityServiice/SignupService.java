@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-public class SecurityService {
+public class SignupService {
 
     @Autowired
     private UserRepository userRepository;
@@ -33,4 +33,6 @@ public class SecurityService {
 
         return userRepository.save(user);
     }
+
+
 }
