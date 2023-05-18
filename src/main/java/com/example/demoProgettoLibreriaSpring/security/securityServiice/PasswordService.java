@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class PasswordService {
 
-    public void requestPassword(RequestPasswordDTO requestPasswordDTO){
+    public void request(RequestPasswordDTO requestPasswordDTO){
 
     }
 
-    public void restorePassword(RestorePasswordDTO restorePasswordDTO){
+    public void restore(RestorePasswordDTO restorePasswordDTO){
 
     }
 

@@ -1,6 +1,7 @@
 package com.example.demoProgettoLibreriaSpring.security.securityEntity;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -15,7 +16,9 @@ public class User {
     private String password;
     @Column(unique = true)
     private String email;
-    private boolean isActive = true; //TODO per ora è finto attivo
+
+    private LocalDateTime jwtCreateOn;
+    private boolean isActive;
     private String activationCode; //TODO da sistemare
     //TODO ruoli ( creare classe o enum)
     //TODO jwt
@@ -30,6 +33,14 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
+    }
+
+    public LocalDateTime getJwtCreateOn() {
+        return jwtCreateOn;
+    }
+
+    public void setJwtCreateOn(LocalDateTime jwtCreateOn) {
+        this.jwtCreateOn = jwtCreateOn;
     }
 
     public long getId() {

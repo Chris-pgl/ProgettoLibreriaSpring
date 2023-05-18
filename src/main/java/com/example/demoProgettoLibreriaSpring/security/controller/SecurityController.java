@@ -26,6 +26,7 @@ public class SecurityController {
         @Autowired
         private PasswordService passwordService;
 
+
         //Signup
         //creazione nuovo utente
         @PostMapping("/signup")
@@ -59,22 +60,14 @@ public class SecurityController {
         }
 
         @PostMapping("/password/request")
-        public ResponseEntity request(@RequestBody RequestPasswordDTO requestPasswordDTO){
-            try{
-
-            }catch (Exception e){
-
-            }
+        public void passwordRequest(@RequestBody RequestPasswordDTO requestPasswordDTO){
+            passwordService.request(requestPasswordDTO);
         }
 
-        @PostMapping("/password/restore")
-        public ResponseEntity restore(@RequestBody RestorePasswordDTO restorePasswordDTO){
-            try{
+       @PostMapping("/password/restore")
+        public void passwordRestore(@RequestBody RestorePasswordDTO restorePasswordDTO){
+            passwordService.restore(restorePasswordDTO);
+       }
 
-            }catch (Exception e){
-
-            }
-        }
-        }
 
 }
