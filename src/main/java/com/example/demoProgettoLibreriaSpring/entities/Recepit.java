@@ -6,8 +6,8 @@ import lombok.*;
 
 
 @Data
-@Entity
-@Table(name = "recepit")
+@Entity(name = "recepit")
+@Table
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,6 +17,7 @@ public class Recepit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String shopName;
     private String info;
     private String address;
