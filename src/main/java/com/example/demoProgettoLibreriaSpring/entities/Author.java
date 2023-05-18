@@ -3,7 +3,7 @@ package com.example.demoProgettoLibreriaSpring.entities;
 import com.example.demoProgettoLibreriaSpring.repositories.AuthorRepository;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 

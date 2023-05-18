@@ -1,7 +1,7 @@
 package com.example.demoProgettoLibreriaSpring.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
