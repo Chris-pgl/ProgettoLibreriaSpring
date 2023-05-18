@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/progetto1
+    url: jdbc:mysql://localhost:3306/only-test
     username: root
     password: Cris1997
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -8,4 +8,4 @@ spring:
     database: mysql
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update

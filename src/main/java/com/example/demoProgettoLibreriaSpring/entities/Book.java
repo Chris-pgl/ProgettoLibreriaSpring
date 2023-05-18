@@ -10,7 +10,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table
+@Table(name = "books")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -35,6 +35,7 @@ public class Book {
     private int copies;
 
     private LocalDateTime creationDate;
+
 
     @ManyToOne
     private Warehouse warehouse;

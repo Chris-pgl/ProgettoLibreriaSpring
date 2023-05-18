@@ -12,7 +12,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table
+@Table(name = "werehouse")
 @Getter
 @Setter
 @NoArgsConstructor
