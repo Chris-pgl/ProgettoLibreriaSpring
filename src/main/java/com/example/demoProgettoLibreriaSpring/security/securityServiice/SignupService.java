@@ -32,7 +32,11 @@ public class SignupService {
         user.setSurname(signupDTO.getSurname());
         user.setUsername(signupDTO.getUsername());
         user.setEmail(signupDTO.getEmail());
-        user.setPassword(encoder.encode(signupDTO.getPassword()));
+
+        user.setPassword(signupDTO.getPassword());
+        //user.setPassword(encoder.encode(signupDTO.getPassword()));
+        //TODO sistemare password encoder,decripta la password ma la salva in quel modo per accedere
+
         user.setActive(false);
         user.setActivationCode(UUID.randomUUID().toString());
 

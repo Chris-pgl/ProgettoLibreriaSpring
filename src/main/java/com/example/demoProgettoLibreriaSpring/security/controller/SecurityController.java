@@ -5,7 +5,10 @@ import com.example.demoProgettoLibreriaSpring.security.securityServiice.LoginSer
 import com.example.demoProgettoLibreriaSpring.security.securityServiice.PasswordService;
 import com.example.demoProgettoLibreriaSpring.security.securityServiice.SignupService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/auth")
 public class SecurityController {
+
+
+        private BCryptPasswordEncoder encoder;
         @Autowired
         private SignupService signupService;
 
@@ -44,13 +50,12 @@ public class SecurityController {
 
         //Login
         @PostMapping("/login")
-        public ResponseEntity loginController(@RequestBody LoginDTO loginDTO){
-            try{
-                return ResponseEntity.ok(loginService.login(loginDTO));
-            }catch (Exception e){
-                return ResponseEntity.badRequest().body(e.getMessage());
-            }
+            public LoginRTO login(@RequestBody LoginDTO loginDTO) throws Exception{
+                LoginRTO loginRto = loginService.login(loginDTO);
+                if(loginRto == null) throw new Exception("Cannot login");
+                return loginRto;
         }
+
 
         @PostMapping("/password/request")
         public void passwordRequest(@RequestBody RequestPasswordDTO requestPasswordDTO){
