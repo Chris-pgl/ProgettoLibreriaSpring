@@ -55,12 +55,12 @@
 		</dependency>
 		<!--  -->
 
-		<!-- per email magari per ora non la metto
+		<!-- per email -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
-		-->
+
 
 		<!-- per securityWeb -->
 		<dependency>

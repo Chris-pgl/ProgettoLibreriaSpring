@@ -1,9 +1,6 @@
 package com.example.demoProgettoLibreriaSpring.security.controller;
 
-import com.example.demoProgettoLibreriaSpring.security.securityEntity.LoginDTO;
-import com.example.demoProgettoLibreriaSpring.security.securityEntity.RequestPasswordDTO;
-import com.example.demoProgettoLibreriaSpring.security.securityEntity.RestorePasswordDTO;
-import com.example.demoProgettoLibreriaSpring.security.securityEntity.SignupDTO;
+import com.example.demoProgettoLibreriaSpring.security.securityEntity.*;
 import com.example.demoProgettoLibreriaSpring.security.securityServiice.LoginService;
 import com.example.demoProgettoLibreriaSpring.security.securityServiice.PasswordService;
 import com.example.demoProgettoLibreriaSpring.security.securityServiice.SignupService;
@@ -41,12 +38,8 @@ public class SecurityController {
 
         //Activation
         @PostMapping("/signup/activation")
-        public ResponseEntity signUpActivation(@RequestBody  ){
-            try{
-                return null;
-            }catch (Exception e){
-                return null;
-            }
+        public void signUpActivation(@RequestBody SignupActivationDTO signupActivationDTO) throws Exception {
+           signupService.activate(signupActivationDTO);
         }
 
         //Login
