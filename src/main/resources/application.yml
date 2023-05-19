@@ -9,3 +9,14 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: create-drop
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: #usernamehere
+    password: #passwordhere
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
