@@ -32,6 +32,7 @@ public class SignupService {
         user.setSurname(signupDTO.getSurname());
         user.setUsername(signupDTO.getUsername());
         user.setEmail(signupDTO.getEmail());
+        user.setPassword(encoder.encode(signupDTO.getPassword()));
         user.setActive(false);
         user.setActivationCode(UUID.randomUUID().toString());
 
