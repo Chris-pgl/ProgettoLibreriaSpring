@@ -58,12 +58,12 @@ public class SecurityController {
 
 
         @PostMapping("/password/request")
-        public void passwordRequest(@RequestBody RequestPasswordDTO requestPasswordDTO){
+        public void passwordRequest(@RequestBody RequestPasswordDTO requestPasswordDTO) throws Exception {
             passwordService.request(requestPasswordDTO);
         }
 
        @PostMapping("/password/restore")
-        public void passwordRestore(@RequestBody RestorePasswordDTO restorePasswordDTO){
+        public void passwordRestore(@RequestBody RestorePasswordDTO restorePasswordDTO) throws Exception {
             passwordService.restore(restorePasswordDTO);
        }
 

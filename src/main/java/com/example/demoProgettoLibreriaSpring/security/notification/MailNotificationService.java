@@ -24,4 +24,18 @@ public class MailNotificationService {
       //sms.setText(" Clicca qui per attivare il tuo account https://www.mioSito.it/signup/activation " + user.getActivationCode()); Così sarà in produzione
         emailSender.send(sms);
     }
+
+
+    public void sendPasswordResetMail(User user) {
+        SimpleMailMessage sms = new SimpleMailMessage();
+        sms.setTo(user.getEmail());
+        sms.setFrom("email4testDeveloper@gmail.com");
+        sms.setReplyTo("email4testDeveloper@gmail.com");
+        sms.setSubject("Benvenuto su DevelBooks!");
+        sms.setText(
+                "Ciao! "+ user.getUsername()+" Benvenuto su DevelBooks La tua libreria automatica."
+                        + "\nLa tua password provvisoria è " + user.getPasswordResetCode()); // per ora manteniamo in questo modo
+        //sms.setText(" Clicca qui per attivare il tuo account https://www.mioSito.it/signup/activation " + user.getActivationCode()); Così sarà in produzione
+        emailSender.send(sms);
+    }
 }

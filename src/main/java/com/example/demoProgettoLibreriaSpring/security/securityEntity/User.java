@@ -21,6 +21,9 @@ public class User {
     private boolean isActive;
     @Column(length = 36)
     private String activationCode;
+
+    @Column(length = 36)
+    private String passwordResetCode;
     //TODO ruoli ( creare classe o enum)
     //TODO jwt
 
@@ -99,6 +102,14 @@ public class User {
 
     public void setActivationCode(String activationCode) {
         this.activationCode = activationCode;
+    }
+
+    public String getPasswordResetCode() {
+        return passwordResetCode;
+    }
+
+    public void setPasswordResetCode(String passwordResetCode) {
+        this.passwordResetCode = passwordResetCode;
     }
 }
 

@@ -7,6 +7,7 @@ import com.example.demoProgettoLibreriaSpring.security.securityEntity.LoginRTO;
 import com.example.demoProgettoLibreriaSpring.security.securityEntity.User;
 import com.example.demoProgettoLibreriaSpring.security.securityRepository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -17,6 +18,8 @@ public class LoginService {
     //TODO questo va nello .yml
     public static final String JWT_SECRET = "e8c368a1-18ce-4616-83ec-cbf535bc177e";
 
+    @Autowired
+    private PasswordEncoder encoder;
 
     @Autowired
     UserRepository userRepository;
@@ -45,8 +48,8 @@ public class LoginService {
         return out;
     }
 
-    public static boolean canUserLogin(User user, String password){
-        return user.getPassword().equals(password);
+    public boolean canUserLogin(User user, String password){
+        return encoder.matches(password, user.getPassword());
     }
 
     public static String getJWT(User user) {
