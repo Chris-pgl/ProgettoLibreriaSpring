@@ -4,6 +4,7 @@ import com.example.demoProgettoLibreriaSpring.security.securityEntity.*;
 import com.example.demoProgettoLibreriaSpring.security.securityServiice.LoginService;
 import com.example.demoProgettoLibreriaSpring.security.securityServiice.PasswordService;
 import com.example.demoProgettoLibreriaSpring.security.securityServiice.SignupService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
@@ -58,13 +59,22 @@ public class SecurityController {
 
 
         @PostMapping("/password/request")
-        public void passwordRequest(@RequestBody RequestPasswordDTO requestPasswordDTO) throws Exception {
-            passwordService.request(requestPasswordDTO);
+        public ResponseEntity passwordRequest(@RequestBody RequestPasswordDTO requestPasswordDTO) throws Exception {
+            try {
+                passwordService.request(requestPasswordDTO);
+               return ResponseEntity.ok().body("Abbiamo inviato un codice all'email inserita!");
+            } catch (Exception e) {
+                return ResponseEntity.ok().body("Abbiamo inviato un codice all'email inserita!");//NON INSERISCO NULLA PER PROTEGGERE GLI UTENTI DA ATTACCHI HACK
+            }
         }
 
        @PostMapping("/password/restore")
         public void passwordRestore(@RequestBody RestorePasswordDTO restorePasswordDTO) throws Exception {
-            passwordService.restore(restorePasswordDTO);
+           try {
+               passwordService.restore(restorePasswordDTO);
+           } catch (Exception e) {
+                //NON INSERISCO NULLA PER PROTEGGERE GLI UTENTI DA ATTACCHI HACK
+           }
        }
 
 
